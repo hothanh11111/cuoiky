@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FPTLaptop Shop</title>
+  <link rel="shortcut icon" type="image" href="./images/iconfpt1.png">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+  <!-- bootstrap links -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <!-- bootstrap links -->
+  <!-- fonts links -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <!-- fonts links -->
+  <style>
+    /* Top navbar styles */
+    .top-navbar {
+      width: 100%;
+      height: 50px;
+      background-color: #a9a9a9;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+    }
+
+    .top-navbar p {
+      color: white;
+      margin: 0;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .top-navbar .icons {
+      display: flex;
+      gap: 20px;
+    }
+
+    .top-navbar .icons a {
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .top-navbar .icons a:hover {
+      color: #dc3545;
+    }
+
+    /* Main navbar styles */
+    #navbar {
+      background-color: #DC8B35FF;
+      font-family: 'Merriweather', serif;
+      padding: 15px 0;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    #logo {
+      font-size: 24px;
+      color: white;
+      text-decoration: none;
+      margin-right: 30px;
+      font-weight: 600;
+    }
+
+    #span1 {
+      color: #ffd700;
+      font-weight: bold;
+    }
+
+    .navbar-nav .nav-link {
+      color: white !important;
+      font-size: 16px;
+      margin: 0 15px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .navbar-nav .nav-link:hover {
+      color: #ffd700 !important;
+      transform: translateY(-2px);
+    }
+
+    .navbar-nav .nav-link.active {
+      color: #ffd700 !important;
+      font-weight: 600;
+    }
+
+    .dropdown-menu {
+      border: none;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .dropdown-item {
+      color: white !important;
+      padding: 10px 20px;
+      transition: all 0.3s ease;
+    }
+
+    .dropdown-item:hover {
+      background-color: #ff4757;
+      transform: translateX(5px);
+    }
+
+    #search {
+      margin-right: 15px;
+    }
+
+    #search .form-control {
+      border-radius: 20px;
+      border: none;
+      padding: 8px 15px;
+      width: 300px;
+    }
+
+    #search .btn {
+      border-radius: 20px;
+      padding: 8px 20px;
+      background-color: #28a745;
+      border-color: #28a745;
+      color: white;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    #search .btn:hover {
+      background-color: #218838;
+      transform: translateY(-2px);
+    }
+
+    .nav-link.cart-link {
+      display: flex;
+      align-items: center;
+      color: white;
+      gap: 5px;
+      padding: 8px 15px;
+      border-radius: 20px;
+      transition: all 0.3s ease;
+    }
+
+    .nav-link.cart-link:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+      transform: translateY(-2px);
+    }
+
+    .cart-link i {
+      font-size: 18px;
+    }
+
+    @media (max-width: 991px) {
+      #search {
+        margin: 15px 0;
+      }
+
+      #search .form-control {
+        width: 100%;
+      }
+
+      .navbar-nav {
+        margin: 15px 0;
+      }
+
+      .nav-link.cart-link {
+        justify-content: center;
+        margin-top: 15px;
+      }
+    }
+
+    /* Products Section Styles */
+    #products {
+      padding: 60px 0;
+      background-color: #f8f9fa;
+    }
+
+    #products h2 {
+      font-family: 'Merriweather', serif;
+      color: #dc3545;
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-bottom: 2rem;
+      position: relative;
+      padding-bottom: 15px;
+    }
+
+    #products h2:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 3px;
+      background-color: #dc3545;
+    }
+
+    .product-card {
+      border: none;
+      border-radius: 15px;
+      overflow: hidden;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .product-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 8px 25px rgba(220, 53, 69, 0.2);
+    }
+
+    .product-card img {
+      height: 250px;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .product-card:hover img {
+      transform: scale(1.05);
+    }
+
+    .product-card .card-body {
+      padding: 1.5rem;
+    }
+
+    .product-card .card-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #2d3436;
+      margin-bottom: 0.75rem;
+    }
+
+    .product-card .card-text {
+      font-size: 0.9rem;
+      line-height: 1.5;
+      color: #636e72;
+      margin-bottom: 1rem;
+    }
+
+    .price-tag {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #dc3545;
+    }
+
+    .btn-outline-primary {
+      border-color: #dc3545;
+      color: #dc3545;
+      padding: 0.5rem 1rem;
+      border-radius: 25px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .btn-outline-primary:hover {
+      background-color: #dc3545;
+      border-color: #dc3545;
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    .btn-outline-primary i {
+      margin-right: 5px;
+    }
+
+    @media (max-width: 768px) {
+      #products {
+        padding: 40px 0;
+      }
+
+      .product-card {
+        margin-bottom: 20px;
+      }
+    }
+
+    /* Other Cards Styles */
+    #other-cards .card {
+      position: relative;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    #other-cards .card img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+    }
+
+    #other-cards .card-img-overlay {
+      background: rgba(0, 0, 0, 0.5);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    #other-cards h3 {
+      color: #fff;
+      font-size: 2rem;
+      font-weight: bold;
+      margin-bottom: 10px;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    }
+
+    #other-cards h5 {
+      color: #ffd700;
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+
+    #other-cards p {
+      color: #fff;
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+    }
+
+    #other-cards #shopnow {
+      background-color: #dc3545;
+      color: white;
+      border: none;
+      padding: 8px 20px;
+      border-radius: 5px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    #other-cards #shopnow:hover {
+      background-color: #c82333;
+      transform: scale(1.05);
+    }
+
+    /* Footer Styles */
+    #footer {
+      background-color: #dc3545;
+      color: white;
+      padding: 60px 0 30px;
+      position: relative;
+      font-family: 'Merriweather', serif;
+    }
+
+    #footer h3 {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+      color: #ffd700;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    #footer p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin-bottom: 15px;
+    }
+
+    #footer strong {
+      color: #ffd700;
+    }
+
+    #footer .social-links {
+      margin: 30px 0;
+    }
+
+    #footer .social-links a {
+      display: inline-block;
+      width: 40px;
+      height: 40px;
+      background-color: rgba(255, 255, 255, 0.1);
+      margin: 0 10px;
+      border-radius: 50%;
+      color: white;
+      text-align: center;
+      line-height: 40px;
+      font-size: 18px;
+      transition: all 0.3s ease;
+    }
+
+    #footer .social-links a:hover {
+      background-color: #ffd700;
+      color: #dc3545;
+      transform: translateY(-5px);
+    }
+
+    #footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 5px;
+      background: linear-gradient(90deg, #ffd700, #dc3545, #ffd700);
+    }
+
+    @media (max-width: 768px) {
+      #footer {
+        padding: 40px 0 20px;
+      }
+
+      #footer h3 {
+        font-size: 2rem;
+      }
+
+      #footer p {
+        font-size: 1rem;
+      }
+
+      #footer .social-links a {
+        width: 35px;
+        height: 35px;
+        line-height: 35px;
+        font-size: 16px;
+        margin: 0 5px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- top navbar -->
+  <div class="top-navbar">
+    <p>WELCOME TO OUR SHOP</p>
+    <div class="icons">
+      <a href="/login"><img src="./images/register.png" alt="" width="18px">Login</a>
+      <a href="/"><img src="./images/register.png" alt="" width="18px">Register</a>
+    </div>
+  </div>
+  <!-- top navbar -->
+
+  <!-- navbar -->
+  <nav class="navbar navbar-expandn-lg" id="navbar">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/" id="logo"><span id="span1">FPT</span>Laptop <span>Shop</span></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span><img src="./images/menu.png" alt="" width="30px"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/sanpham">Product</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              Category
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: #dc3545;">
+              <li><a class="dropdown-item" href="#">Msi</a></li>
+              <li><a class="dropdown-item" href="#">Acer</a></li>
+              <li><a class="dropdown-item" href="#">Dell</a></li>
+              <li><a class="dropdown-item" href="#">Asus</a></li>
+            </ul>
+          </li>
+        </ul>
+        <form class="d-flex" id="search">
+          <input class="form-control me-2" type="search" id="searchInput" placeholder="Bạn tìm gì..."
+            aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+        <!-- Cart item with icon, aligned to the right of the search -->
+        <a class="nav-link cart-link" href="/cart">
+          <i class="fas fa-shopping-cart"></i>
+          Giỏ hàng
+        </a>
+      </div>
+    </div>
+  </nav>
+  <!-- navbar -->
+
+  <style>
+    /* Slider Banner Styles */
+    .carousel {
+      margin-top: 10px;
+      margin-left: 110px;
+      margin-right: 110px;
+    }
+
+    .carousel-item img {
+      height: auto;
+      /* Adjust the height as needed */
+      object-fit: cover;
+      /* Ensures the image covers the area without distortion */
+      border-radius: 5px;
+    }
+
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+      background-color: rgba(0, 0, 0, 0.5);
+      /* Semi-transparent background for controls */
+      border-radius: 50%;
+      /* Rounded controls */
+    }
+
+    .carousel-control-prev,
+    .carousel-control-next {
+      width: 5%;
+      /* Adjust the width of the controls */
+    }
+
+    .carousel-control-prev,
+    .carousel-control-next {
+      width: 5%;
+      /* Adjust the width of the controls */
+    }
+  </style>
+
+  <!-- slider -->
+  <div id="carouselExample" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2000">
+    <!-- Điều chỉnh thời gian giữa các slide -->
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="./images/baner1.jpg" class="d-block w-100" alt="Banner 1">
+      </div>
+      <div class="carousel-item">
+        <img src="./images/baner2.jpg" class="d-block w-100" alt="Banner 2">
+      </div>
+      <div class="carousel-item">
+        <img src="./images/baner3.jpg" class="d-block w-100" alt="Banner 3">
+      </div>
+      <div class="carousel-item">
+        <img src="./images/baner4.jpg" class="d-block w-100" alt="Banner 4">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+  <!-- slider -->
+
+
+
+
+  <div class="container my-5" id="products">
+    <h2 class="text-center mb-4">PRODUCTS</h2>
+    <div class="row g-4">
+      <div class="col-md-4" th:each="product : ${products}">
+        <div class="card product-card h-100">
+          <img th:src="@{'/images/' + ${product.image}}" alt="...">
+          <div class="card-body">
+            <div class="row">
+              <h5 class="card-title" th:text="${product.name}"></h5>
+              <h5 class="card-title" th:text="${product.rating}"></h5>
+            </div>
+            <p class="card-text text-muted" th:text="${product.description}"></p>
+            <div class="d-flex justify-content-between align-items-center">
+              <div>
+                <span class="price-tag" th:text="${product.price + '$'}"></span>
+              </div>
+              <a href="#" class="btn btn-outline-primary">
+                <i class="fas fa-shopping-cart me-1"></i>Add to Cart
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- product cards -->
+
+  <!-- other cards -->
+  <div class="container" id="other-cards">
+    <div class="row">
+      <div class="col-md-6 py-3 py-md-0">
+        <div class="card">
+          <img src="./images/c1.png" alt="">
+          <div class="card-img-overlay">
+            <h3>Best Laptop</h3>
+            <h5>Latest Collection</h5>
+            <p>Up To 50% Off</p>
+            <button id="shopnow">Shop Now</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 py-3 py-md-0">
+        <div class="card">
+          <img src="./images/c1.png" alt="">
+          <div class="card-img-overlay">
+            <h3>Best Laptop</h3>
+            <h5>Latest Collection</h5>
+            <p>Up To 50% Off</p>
+            <button id="shopnow">Shop Now</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- other cards -->
+
+  <!-- product cards -->
+
+  <!-- product cards -->
+
+  <!-- footer -->
+  <footer id="footer">
+    <div class="container text-center">
+      <h3>FPTLaptop Shop</h3>
+      <p>80 Đuong Le Tan Trung, Phuong Tan Thanh, Thanh Pho Tam Ky</p>
+      <p><strong>Phone:</strong> +19003500 | <strong>Email:</strong> fptlaptopshop@gmail.com</p>
+      <div class="social-links">
+        <a href="#"><i class="fa-brands fa-youtube"></i></a>
+        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+      </div>
+      <p>&copy; 2024 FPTLaptop Shop.
+  </footer>
+  <!-- footer -->
+
+  <style>
+    html{
+      scroll-behavior: smooth;
+    }
+    .arrow{
+      position: fixed;
+      width: 50px;
+      height: 50px;
+      bottom: 50px;
+      right: 50px;
+      text-decoration: none;
+      text-align: center;
+      line-height: 50px;
+    }
+  </style>
+
+  <a href="#" class="arrow"><i><img src="./images/arrow.png" alt=""></i></a>
+
+  <script>
+    document.getElementById('search').addEventListener('submit', function (event) {
+      event.preventDefault(); // Prevent the form from submitting
+
+      const query = document.getElementById('searchInput').value.toLowerCase();
+      const cards = document.querySelectorAll('.card');
+
+      cards.forEach(card => {
+        const title = card.querySelector('h3').textContent.toLowerCase();
+        const description = card.querySelector('p').textContent.toLowerCase();
+
+        if (title.includes(query) || description.includes(query)) {
+          card.parentElement.style.display = 'block'; // Show card
+        } else {
+          card.parentElement.style.display = 'none'; // Hide card
+        }
+      });
+    });
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+
+</body>
+
+</html>
